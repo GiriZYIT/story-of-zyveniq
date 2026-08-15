@@ -516,3 +516,201 @@
     font-size: 20px;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .story-container {
+    position: fixed;
+    inset: 0;
+
+    width: 100vw;
+    height: 100dvh;
+
+    min-width: 0;
+    max-width: 100vw;
+
+    overflow: hidden;
+
+    background-size: cover;
+    background-position: center;
+  }
+
+  .story-content {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+
+    padding: 20px;
+
+    text-align: center;
+  }
+
+  .story-content h1 {
+    width: 100%;
+    max-width: 100%;
+
+    font-size: clamp(40px, 13vw, 64px);
+    line-height: 0.95;
+
+    letter-spacing: 2px;
+
+    margin: 0 0 15px;
+
+    overflow-wrap: break-word;
+  }
+
+  .story-content p {
+    width: 100%;
+    max-width: 330px;
+
+    margin: 0 auto;
+
+    font-size: 17px;
+    line-height: 1.4;
+    letter-spacing: 0.5px;
+  }
+}
+
+/* =========================================
+   ZYVENIQ STORY — MOBILE APP MODE
+   ========================================= */
+
+@media screen and (max-width: 768px) {
+
+  .story-container {
+    position: fixed;
+    inset: 0;
+
+    width: 100vw;
+    height: 100dvh;
+
+    min-width: 0;
+    max-width: 100vw;
+
+    overflow: hidden;
+
+    background-size: cover;
+    background-position: center center;
+
+    touch-action: pan-y;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  .story-content {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    bottom: 12%;
+
+    width: 100%;
+    max-width: 100%;
+
+    padding: 0 24px;
+
+    box-sizing: border-box;
+
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    overflow: hidden;
+  }
+
+  .story-content::before {
+    font-size: 9px;
+
+    letter-spacing: 0.4em;
+
+    margin-bottom: 14px;
+  }
+
+  .story-content h1 {
+    width: 100%;
+    max-width: 100%;
+
+    margin: 0;
+
+    font-size: clamp(38px, 13vw, 58px);
+
+    line-height: 0.98;
+
+    letter-spacing: 2px;
+
+    text-align: center;
+
+    overflow-wrap: break-word;
+    word-break: normal;
+  }
+
+  .story-content p {
+    width: 100%;
+    max-width: 330px;
+
+    margin: 16px auto 0;
+
+    font-size: 17px;
+
+    line-height: 1.45;
+
+    letter-spacing: 0.5px;
+
+    text-align: center;
+
+    overflow-wrap: break-word;
+  }
+
+  /* Progress bars */
+
+  .story-progress {
+    position: fixed;
+
+    top: calc(14px + env(safe-area-inset-top));
+
+    left: 14px;
+    right: 14px;
+
+    z-index: 100;
+
+    display: flex;
+
+    gap: 4px;
+  }
+
+  /* Mobile safe area */
+
+  .story-container {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+
+    box-sizing: border-box;
+  }
+}
+
+
+/* =========================================
+   SMALL PHONES
+   ========================================= */
+
+@media screen and (max-width: 390px) {
+
+  .story-content {
+    bottom: 11%;
+
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .story-content h1 {
+    font-size: 38px;
+    letter-spacing: 1.5px;
+  }
+
+  .story-content p {
+    max-width: 310px;
+    font-size: 16px;
+  }
+}

@@ -572,6 +572,158 @@ const startExperience = () => {
         .splash-container.fade-out{
          animation: swipeUp .9s cubic-bezier(.22,1,.36,1) forwards;
       }
+         /* ================================
+   MOBILE APP LAYOUT
+   ================================ */
+
+@media screen and (max-width: 768px) {
+
+  .splash-container {
+    position: fixed;
+    inset: 0;
+
+    width: 100vw;
+    height: 100dvh;
+
+    min-width: 0;
+    max-width: 100vw;
+
+    overflow: hidden;
+
+    background-size: cover;
+    background-position: center center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding:
+      env(safe-area-inset-top)
+      env(safe-area-inset-right)
+      env(safe-area-inset-bottom)
+      env(safe-area-inset-left);
+
+    box-sizing: border-box;
+  }
+
+  .brand-container {
+    width: 100%;
+    max-width: 100%;
+
+    padding: 0 22px;
+
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .splash-logo-wrapper {
+    width: 150px;
+    height: 65px;
+
+    margin-bottom: 5px;
+  }
+
+  .logo-image {
+    width: 150px;
+    height: auto;
+  }
+
+  .brand-text {
+    width: 100%;
+
+    font-size: clamp(42px, 14vw, 62px);
+
+    letter-spacing: 0.18rem;
+
+    line-height: 0.95;
+
+    margin: 0;
+
+    text-align: center;
+
+    white-space: nowrap;
+  }
+
+  .brand-tagline {
+    width: 100%;
+
+    font-size: clamp(11px, 3.5vw, 16px);
+
+    letter-spacing: 0.28rem;
+
+    margin-top: 10px;
+
+    white-space: nowrap;
+  }
+
+  .gold-divider {
+    width: min(210px, 65vw);
+
+    margin: 14px auto 18px;
+  }
+
+  .brand-description {
+    width: 100%;
+    max-width: 340px;
+
+    margin: 0 auto;
+
+    padding: 0 5px;
+
+    box-sizing: border-box;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+    letter-spacing: 0.01em;
+
+    text-align: center;
+  }
+
+  .start-button {
+    width: min(330px, calc(100vw - 44px));
+
+    height: 58px;
+
+    margin-top: 30px;
+
+    padding: 0 20px;
+
+    box-sizing: border-box;
+
+    font-size: 18px;
+
+    letter-spacing: 0.03em;
+
+    white-space: nowrap;
+
+    border-radius: 40px;
+  }
+
+  .audio-toggle {
+    position: fixed;
+
+    right: 18px;
+    bottom: calc(18px + env(safe-area-inset-bottom));
+
+    width: 52px;
+    height: 52px;
+
+    z-index: 99999;
+  }
+
+  .ambient-glow {
+    width: 100vw;
+    height: 100vw;
+
+    max-width: 500px;
+    max-height: 500px;
+  }
+}
       `}</style>
 
    <div

@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "./../styles/StoryHero.css";
 
@@ -41,6 +41,10 @@ export default function StoryHero({ onFinish }) {
   const [direction, setDirection] = useState(1);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
+  const touchStartX = useRef(0);
+  const touchStartY = useRef(0);
+  const touchStartTime = useRef(0);
+
   const nextStory = useCallback(() => {
     if (isTransitioning) return;
 
@@ -70,19 +74,77 @@ export default function StoryHero({ onFinish }) {
     }, 850);
   }, [index, isTransitioning]);
 
-  /* Automatic progression */
-  useEffect(() => {
-    const timer = setTimeout(() => {
+  /* =========================================
+     TOUCH / SWIPE
+     ========================================= */
+
+  const handleTouchStart = (event) => {
+    const touch = event.touches[0];
+
+    touchStartX.current = touch.clientX;
+    touchStartY.current = touch.clientY;
+    touchStartTime.current = Date.now();
+  };
+
+  const handleTouchEnd = (event) => {
+    const touch = event.changedTouches[0];
+
+    const deltaX = touch.clientX - touchStartX.current;
+    const deltaY = touch.clientY - touchStartY.current;
+
+    const elapsed = Date.now() - touchStartTime.current;
+
+    const minimumSwipeDistance = 55;
+
+    /* Ignore vertical scrolling gestures */
+    if (Math.abs(deltaY) > Math.abs(deltaX)) {
+      return;
+    }
+
+    /* Swipe left = next */
+    if (
+      deltaX < -minimumSwipeDistance &&
+      elapsed < 700
+    ) {
       nextStory();
-    }, 6000);
+      return;
+    }
 
-    return () => clearTimeout(timer);
-  }, [index, nextStory]);
+    /* Swipe right = previous */
+    if (
+      deltaX > minimumSwipeDistance &&
+      elapsed < 700
+    ) {
+      previousStory();
+      return;
+    }
 
-  /* Keyboard navigation */
+    /* Simple tap */
+    if (
+      Math.abs(deltaX) < 15 &&
+      Math.abs(deltaY) < 15 &&
+      elapsed < 500
+    ) {
+      const screenWidth = window.innerWidth;
+
+      if (touch.clientX > screenWidth * 0.45) {
+        nextStory();
+      } else {
+        previousStory();
+      }
+    }
+  };
+
+  /* =========================================
+     KEYBOARD
+     ========================================= */
+
   useEffect(() => {
     const handleKeyDown = (event) => {
-      if (event.key === "ArrowRight" || event.key === " ") {
+      if (
+        event.key === "ArrowRight" ||
+        event.key === " "
+      ) {
         event.preventDefault();
         nextStory();
       }
@@ -100,48 +162,69 @@ export default function StoryHero({ onFinish }) {
     window.addEventListener("keydown", handleKeyDown);
 
     return () => {
-      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener(
+        "keydown",
+        handleKeyDown
+      );
     };
   }, [nextStory, previousStory, onFinish]);
 
   const story = stories[index];
 
   return (
-    <main className="fixed inset-0 z-[9999] bg-[#011826] overflow-hidden">
+    <main
+      className="fixed inset-0 z-[9999] bg-[#011826] overflow-hidden touch-none"
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
 
-      {/* =====================================
-          PROGRESS BARS
-      ====================================== */}
+      {/* =========================================
+          PROGRESS
+      ========================================= */}
 
-      <div className="absolute top-5 left-4 right-4 z-[50] flex gap-1.5">
+      <div
+        className="
+          absolute
+          top-[max(14px,env(safe-area-inset-top))]
+          left-4
+          right-4
+          z-[100]
+          flex
+          gap-1
+        "
+      >
         {stories.map((_, storyIndex) => (
           <div
             key={storyIndex}
-            className="h-[2px] flex-1 overflow-hidden rounded-full bg-white/25"
+            className="
+              h-[2px]
+              flex-1
+              overflow-hidden
+              rounded-full
+              bg-white/25
+            "
           >
             <motion.div
-              className="h-full bg-white"
+              className="h-full bg-[#D4AF37]"
               initial={{ width: "0%" }}
               animate={{
                 width:
-                  storyIndex < index
-                    ? "100%"
-                    : storyIndex === index
+                  storyIndex <= index
                     ? "100%"
                     : "0%",
               }}
               transition={{
-                duration: storyIndex === index ? 6 : 0.3,
-                ease: "linear",
+                duration: 0.35,
+                ease: "easeOut",
               }}
             />
           </div>
         ))}
       </div>
 
-      {/* =====================================
+      {/* =========================================
           SKIP
-      ====================================== */}
+      ========================================= */}
 
       <button
         type="button"
@@ -151,12 +234,12 @@ export default function StoryHero({ onFinish }) {
         }}
         className="
           absolute
-          top-10
-          right-5
-          z-[60]
-          px-4
-          py-2
-          text-[10px]
+          top-[max(34px,calc(env(safe-area-inset-top)+18px))]
+          right-4
+          z-[110]
+          px-3
+          py-1.5
+          text-[9px]
           md:text-xs
           uppercase
           tracking-[0.25em]
@@ -165,6 +248,7 @@ export default function StoryHero({ onFinish }) {
           border-white/30
           rounded-full
           backdrop-blur-md
+          bg-black/10
           hover:bg-white
           hover:text-[#023047]
           transition-all
@@ -173,9 +257,9 @@ export default function StoryHero({ onFinish }) {
         Skip
       </button>
 
-      {/* =====================================
+      {/* =========================================
           STORY
-      ====================================== */}
+      ========================================= */}
 
       <AnimatePresence
         mode="sync"
@@ -186,6 +270,7 @@ export default function StoryHero({ onFinish }) {
           key={index}
           custom={direction}
           className="story-container"
+
           style={{
             backgroundImage: `url(${story.image})`,
           }}
@@ -193,28 +278,39 @@ export default function StoryHero({ onFinish }) {
           initial={{
             opacity: 0,
             scale: 1.08,
+
             clipPath:
               direction === 1
-                ? "polygon(100% 0, 100% 0, 100% 100%, 100% 100%)"
-                : "polygon(0 0, 0 0, 0 100%, 0 100%)",
+                ? "polygon(100% 0,100% 0,100% 100%,100% 100%)"
+                : "polygon(0 0,0 0,0 100%,0 100%)",
           }}
 
           animate={{
             opacity: 1,
             scale: 1,
+
             clipPath:
-              "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+              "polygon(0 0,100% 0,100% 100%,0 100%)",
           }}
 
           exit={{
             opacity: 0,
-            scale: 1.12,
-            x: direction === 1 ? -80 : 80,
-            rotate: direction === 1 ? -1.5 : 1.5,
+            scale: 1.08,
+
+            x:
+              direction === 1
+                ? "-8%"
+                : "8%",
+
+            rotate:
+              direction === 1
+                ? -1.2
+                : 1.2,
+
             clipPath:
               direction === 1
-                ? "polygon(0 0, 78% 0, 100% 100%, 0 100%)"
-                : "polygon(22% 0, 100% 0, 100% 100%, 0 100%)",
+                ? "polygon(0 0,78% 0,100% 100%,0 100%)"
+                : "polygon(22% 0,100% 0,100% 100%,0 100%)",
           }}
 
           transition={{
@@ -223,29 +319,28 @@ export default function StoryHero({ onFinish }) {
           }}
         >
 
-          {/* =====================================
-              DARK OVERLAY
-          ====================================== */}
+          {/* DARK OVERLAY */}
 
-          <div className="overlay"></div>
+          <div className="overlay" />
 
-          {/* =====================================
-              CINEMATIC CONTENT
-          ====================================== */}
+          {/* CONTENT */}
 
           <motion.div
             className="story-content"
+
             initial={{
               opacity: 0,
-              y: 45,
+              y: 40,
             }}
+
             animate={{
               opacity: 1,
               y: 0,
             }}
+
             transition={{
-              duration: 1,
-              delay: 0.25,
+              duration: 0.9,
+              delay: 0.2,
               ease: [0.22, 1, 0.36, 1],
             }}
           >
@@ -254,15 +349,17 @@ export default function StoryHero({ onFinish }) {
             <motion.p
               initial={{
                 opacity: 0,
-                y: 20,
+                y: 18,
               }}
+
               animate={{
                 opacity: 1,
                 y: 0,
               }}
+
               transition={{
-                duration: 0.8,
-                delay: 0.45,
+                duration: 0.75,
+                delay: 0.35,
               }}
             >
               {story.subtitle}
@@ -272,59 +369,34 @@ export default function StoryHero({ onFinish }) {
         </motion.div>
       </AnimatePresence>
 
-      {/* =====================================
-          LEFT CLICK ZONE
-      ====================================== */}
+      {/* =========================================
+          MOBILE TAP AREAS
+      ========================================= */}
 
-      <button
-        type="button"
-        aria-label="Previous scene"
-        onClick={(event) => {
-          event.stopPropagation();
-          previousStory();
-        }}
-        className="
+      <div className="
+        absolute
+        inset-0
+        z-[20]
+        pointer-events-none
+      ">
+
+        <div className="
           absolute
           left-0
           top-0
           bottom-0
-          z-[40]
-          w-[28%]
-          cursor-w-resize
-          bg-transparent
-          border-none
-        "
-      />
+          w-[40%]
+        " />
 
-      {/* =====================================
-          RIGHT CLICK ZONE
-      ====================================== */}
-
-      <button
-        type="button"
-        aria-label="Next scene"
-        onClick={(event) => {
-          event.stopPropagation();
-          nextStory();
-        }}
-        className="
+        <div className="
           absolute
           right-0
           top-0
           bottom-0
-          z-[40]
-          w-[72%]
-          cursor-e-resize
-          bg-transparent
-          border-none
-        "
-      />
+          w-[60%]
+        " />
 
-      {/* =====================================
-          BOTTOM INSTRUCTION
-      ====================================== */}
-
-     
+      </div>
 
     </main>
   );
