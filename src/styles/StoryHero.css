@@ -336,3 +336,183 @@
     font-size: 15px;
   }
 }
+
+/* =========================================
+   MOBILE RESPONSIVE DESIGN
+   ========================================= */
+
+@media (max-width: 768px) {
+
+  .story-container {
+    width: 100%;
+    height: 100dvh;
+    min-height: 100dvh;
+
+    background-size: cover;
+    background-position: center center;
+
+    overflow: hidden;
+  }
+
+  .overlay {
+    background: rgba(0, 0, 0, 0.32);
+  }
+
+  .story-content {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+
+    padding: 0 22px 70px;
+
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    overflow: hidden;
+  }
+
+  .story-content h1 {
+    width: 100%;
+
+    margin: 0 0 14px;
+
+    font-size: clamp(42px, 14vw, 68px);
+    line-height: 0.95;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
+  .story-content p {
+    width: 100%;
+    max-width: 340px;
+
+    margin: 0 auto;
+
+    font-size: clamp(17px, 5vw, 24px);
+    line-height: 1.35;
+
+    letter-spacing: 0.5px;
+
+    white-space: normal;
+    overflow-wrap: break-word;
+  }
+}
+
+
+/* Smaller phones */
+@media (max-width: 430px) {
+
+  .story-content {
+    padding-left: 18px;
+    padding-right: 18px;
+    padding-bottom: 55px;
+  }
+
+  .story-content h1 {
+    font-size: clamp(38px, 13vw, 58px);
+    letter-spacing: 2px;
+  }
+
+  .story-content p {
+    max-width: 330px;
+
+    font-size: 18px;
+    line-height: 1.35;
+  }
+}
+
+
+/* Very small phones */
+@media (max-width: 360px) {
+
+  .story-content {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .story-content h1 {
+    font-size: 38px;
+  }
+
+  .story-content p {
+    font-size: 16px;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .experience-buttons {
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .experience-buttons button {
+    width: 100%;
+    max-width: 340px;
+    margin: 0 auto;
+
+    min-height: 70px;
+
+    padding: 16px 20px;
+
+    box-sizing: border-box;
+
+    font-size: 18px;
+    letter-spacing: 2px;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .splash-container {
+    width: 100%;
+    height: 100dvh;
+    overflow: hidden;
+  }
+
+  .splash-content {
+    width: 100%;
+    max-width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .splash-content h1 {
+    font-size: clamp(42px, 15vw, 70px);
+    letter-spacing: 4px;
+    line-height: 1;
+  }
+
+  .splash-content p {
+    width: 100%;
+    max-width: 330px;
+
+    margin: 20px auto;
+
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .splash-content button {
+    width: min(90%, 340px);
+
+    padding: 18px 24px;
+
+    font-size: 20px;
+  }
+}
