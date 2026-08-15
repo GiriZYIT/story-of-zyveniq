@@ -249,3 +249,90 @@
   }
 
 }
+
+/* =========================
+   MOBILE RESPONSIVE
+   ========================= */
+
+@media (max-width: 768px) {
+
+  .story-container {
+    width: 100vw;
+    height: 100dvh;
+    min-height: 100dvh;
+
+    background-size: cover;
+    background-position: center center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .overlay {
+    background: rgba(0, 0, 0, 0.28);
+  }
+
+  .story-content {
+    width: 90%;
+    max-width: 420px;
+    padding: 20px;
+
+    text-align: center;
+  }
+
+  .story-content h1 {
+    font-size: clamp(38px, 11vw, 64px);
+    line-height: 1.05;
+    letter-spacing: 4px;
+    margin-bottom: 14px;
+  }
+
+  .story-content p {
+    font-size: clamp(16px, 4.5vw, 22px);
+    line-height: 1.5;
+    letter-spacing: 1px;
+    margin: 0 auto;
+  }
+}
+
+
+/* Small phones */
+@media (max-width: 480px) {
+
+  .story-container {
+    background-position: center center;
+  }
+
+  .story-content {
+    width: 92%;
+    padding: 16px;
+  }
+
+  .story-content h1 {
+    font-size: 42px;
+    letter-spacing: 3px;
+  }
+
+  .story-content p {
+    font-size: 17px;
+    line-height: 1.45;
+    letter-spacing: 0.8px;
+  }
+}
+
+
+/* Very small phones */
+@media (max-width: 360px) {
+
+  .story-content h1 {
+    font-size: 34px;
+  }
+
+  .story-content p {
+    font-size: 15px;
+  }
+}
