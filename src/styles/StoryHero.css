@@ -1,0 +1,251 @@
+/* =========================================
+   ZYVENIQ — CINEMATIC STORY EXPERIENCE
+   ========================================= */
+
+.story-container {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100dvh;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  isolation: isolate;
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+/* =========================================
+   CINEMATIC DARK OVERLAY
+   ========================================= */
+
+.story-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 18, 35, 0.30) 0%,
+      rgba(0, 18, 35, 0.05) 45%,
+      rgba(0, 8, 18, 0.62) 100%
+    );
+
+  pointer-events: none;
+}
+
+
+/* =========================================
+   LUXURY LIGHT SWEEP
+   ========================================= */
+
+.story-container::after {
+  content: "";
+  position: absolute;
+
+  top: -50%;
+  left: -100%;
+
+  width: 45%;
+  height: 200%;
+
+  z-index: 2;
+
+  background: linear-gradient(
+    110deg,
+    transparent 0%,
+    rgba(255,255,255,0.02) 35%,
+    rgba(255,255,255,0.16) 50%,
+    rgba(255,255,255,0.02) 65%,
+    transparent 100%
+  );
+
+  transform: rotate(15deg);
+
+  animation: luxuryLightSweep 7s ease-in-out infinite;
+
+  pointer-events: none;
+}
+
+
+@keyframes luxuryLightSweep {
+
+  0% {
+    left: -100%;
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  60% {
+    opacity: 0.7;
+  }
+
+  100% {
+    left: 150%;
+    opacity: 0;
+  }
+}
+
+
+/* =========================================
+   CONTENT
+   ========================================= */
+
+.story-content {
+  position: relative;
+  z-index: 5;
+
+  width: min(900px, 90%);
+
+  text-align: center;
+
+  color: white;
+
+  padding: 24px;
+
+  pointer-events: none;
+
+  text-shadow:
+    0 3px 25px rgba(0, 0, 0, 0.45);
+}
+
+
+/* SMALL BRAND LABEL */
+
+.story-content::before {
+  content: "ZYVENIQ";
+
+  display: block;
+
+  margin-bottom: 18px;
+
+  color: #d4a017;
+
+  font-size: 11px;
+
+  letter-spacing: 0.55em;
+
+  font-weight: 600;
+}
+
+
+/* TITLE */
+
+.story-content h1 {
+  margin: 0;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: clamp(38px, 8vw, 86px);
+
+  font-weight: 500;
+
+  line-height: 1.05;
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+
+  color: #ffffff;
+}
+
+
+/* SUBTITLE */
+
+.story-content p {
+  margin: 22px auto 0;
+
+  max-width: 650px;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: clamp(16px, 3vw, 25px);
+
+  font-weight: 400;
+
+  line-height: 1.6;
+
+  letter-spacing: 0.08em;
+
+  color: rgba(255,255,255,0.92);
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 768px) {
+
+  .story-container {
+    background-position: center center;
+  }
+
+  .story-content {
+    width: 92%;
+    padding: 20px;
+  }
+
+  .story-content::before {
+    font-size: 8px;
+    letter-spacing: 0.45em;
+    margin-bottom: 14px;
+  }
+
+  .story-content h1 {
+    font-size: clamp(34px, 12vw, 58px);
+    letter-spacing: 0.07em;
+  }
+
+  .story-content p {
+    margin-top: 16px;
+    font-size: 16px;
+    line-height: 1.55;
+    letter-spacing: 0.05em;
+  }
+}
+
+
+/* =========================================
+   VERY SMALL PHONES
+   ========================================= */
+
+@media (max-width: 390px) {
+
+  .story-content h1 {
+    font-size: 32px;
+  }
+
+  .story-content p {
+    font-size: 14px;
+  }
+}
+
+
+/* =========================================
+   REDUCED MOTION ACCESSIBILITY
+   ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .story-container::after {
+    animation: none;
+  }
+
+}

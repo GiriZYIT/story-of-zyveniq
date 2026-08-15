@@ -1,0 +1,123 @@
+/* ==============================
+   ZYVENIQ Luxury Light Sweep
+   ============================== */
+
+.section-luxury{
+    position:relative;
+    overflow:hidden;
+    isolation:isolate;
+}
+
+/* Main light beam */
+
+.section-luxury::before{
+
+    content:"";
+    position:absolute;
+
+    inset:-40%;
+
+    background:
+    linear-gradient(
+        120deg,
+
+        rgba(255,255,255,0) 34%,
+
+        rgba(255,248,220,.05) 42%,
+
+        rgba(255,255,255,.30) 50%,
+
+        rgba(255,248,220,.10) 58%,
+
+        rgba(255,255,255,0) 66%
+    );
+
+    transform:
+        translateX(-170%)
+        rotate(18deg);
+
+    animation:
+        zyveniqSweep 14s
+        cubic-bezier(.22,.61,.36,1)
+        infinite;
+
+    pointer-events:none;
+
+    z-index:2;
+
+    filter:blur(16px);
+}
+
+
+/* Soft ambient glow */
+
+.section-luxury::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+    radial-gradient(
+        circle at 50% 40%,
+
+        rgba(255,245,215,.10),
+
+        transparent 65%
+    );
+
+    pointer-events:none;
+
+    z-index:1;
+}
+
+
+/* Content */
+
+.section-luxury>*{
+
+    position:relative;
+
+    z-index:3;
+}
+
+
+/* Animation */
+
+@keyframes zyveniqSweep{
+
+0%{
+
+transform:
+translateX(-180%)
+rotate(18deg);
+
+}
+
+35%{
+
+transform:
+translateX(-40%)
+rotate(18deg);
+
+}
+
+55%{
+
+transform:
+translateX(20%)
+rotate(18deg);
+
+}
+
+100%{
+
+transform:
+translateX(220%)
+rotate(18deg);
+
+}
+
+}

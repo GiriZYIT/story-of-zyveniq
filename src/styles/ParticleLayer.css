@@ -1,0 +1,44 @@
+.particle-layer{
+
+    position:absolute;
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+    z-index:1;
+
+}
+
+.particle{
+
+    position:absolute;
+
+    bottom:-40px;
+
+    width:4px;
+    height:4px;
+
+    border-radius:50%;
+
+    background:#D4AF37;
+
+    animation:floatUp linear infinite;
+}
+
+@keyframes floatUp{
+
+    from{
+
+        transform:translateY(0);
+
+    }
+
+    to{
+
+        transform:translateY(-120vh);
+
+    }
+
+}
