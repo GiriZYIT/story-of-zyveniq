@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import logo from "../assets/logo.webp";
-import heroImage from "../assets/home/hero_banner.png";
+import heroImage from "../assets/Home/hero_banner.png";
 import "./../styles/Home.css";
 
 export default function Home() {
