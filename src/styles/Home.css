@@ -1,0 +1,484 @@
+/* =========================================
+   ZYVENIQ HOME PAGE
+========================================= */
+
+.home-page {
+  width: 100%;
+  height: 100dvh;
+  overflow: hidden;
+  background: #07110f;
+  color: white;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.home-hero {
+  position: relative;
+  width: 100%;
+  height: 100dvh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-size: cover;
+  background-position: center;
+
+  overflow: hidden;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.15),
+    rgba(0, 0, 0, 0.25) 45%,
+    rgba(0, 0, 0, 0.72)
+  );
+}
+
+
+/* =========================================
+   HERO CONTENT
+========================================= */
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+
+  width: min(90%, 700px);
+  padding: 30px 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+}
+
+
+/* =========================================
+   BRAND
+========================================= */
+
+.brand-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-bottom: 42px;
+}
+
+.home-logo {
+  width: 120px;
+  height: auto;
+
+  object-fit: contain;
+  margin-bottom: 12px;
+
+  filter: drop-shadow(
+    0 4px 12px rgba(0, 0, 0, 0.4)
+  );
+}
+
+.brand-name {
+  margin: 0;
+
+  font-size: clamp(38px, 5vw, 62px);
+  font-weight: 500;
+
+  line-height: 1;
+  letter-spacing: 0.16em;
+
+  color: #f5e7bd;
+  text-transform: uppercase;
+
+  text-shadow:
+    0 3px 15px rgba(0, 0, 0, 0.45);
+}
+
+.brand-tagline {
+  margin: 12px 0 0;
+
+  font-size: clamp(10px, 1.2vw, 15px);
+  font-weight: 500;
+
+  letter-spacing: 0.28em;
+  line-height: 1.4;
+
+  color: #f5e7bd;
+  text-transform: uppercase;
+}
+
+
+/* =========================================
+   MAIN TITLE
+========================================= */
+
+.hero-content h1 {
+  margin: 0;
+
+  font-size: clamp(42px, 6vw, 82px);
+  line-height: 0.95;
+
+  font-weight: 500;
+  letter-spacing: 0.02em;
+
+  text-shadow:
+    0 4px 25px rgba(0, 0, 0, 0.45);
+}
+
+
+/* =========================================
+   DIVIDER
+========================================= */
+
+.hero-divider {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  width: min(320px, 70vw);
+  margin: 28px 0;
+}
+
+.hero-divider span {
+  color: #d7a936;
+}
+
+.hero-divider span:first-child,
+.hero-divider span:last-child {
+  flex: 1;
+  height: 1px;
+
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.hero-divider span:nth-child(2) {
+  font-size: 13px;
+}
+
+
+/* =========================================
+   DESCRIPTION
+========================================= */
+
+.hero-content p {
+  max-width: 570px;
+
+  margin: 0 auto 35px;
+
+  font-size: clamp(15px, 2vw, 20px);
+  line-height: 1.7;
+
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 0.02em;
+}
+
+
+/* =========================================
+   BUTTON
+========================================= */
+
+.explore-button,
+.back-button {
+  border: 1px solid rgba(215, 169, 54, 0.8);
+
+  background: rgba(10, 17, 15, 0.45);
+  color: #f1d27b;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+
+  cursor: pointer;
+
+  transition:
+    background 0.35s ease,
+    color 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.explore-button {
+  padding: 17px 38px;
+  font-size: 14px;
+
+  backdrop-filter: blur(8px);
+}
+
+.explore-button:hover,
+.back-button:hover {
+  background: #d7a936;
+  color: #101512;
+  border-color: #d7a936;
+}
+
+
+/* =========================================
+   COMING SOON
+========================================= */
+
+.coming-soon {
+  position: relative;
+
+  width: 100%;
+  height: 100dvh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  background: radial-gradient(
+    circle at center,
+    #29332c,
+    #111814 45%,
+    #050807
+  );
+}
+
+.coming-soon::before {
+  content: "";
+
+  position: absolute;
+
+  width: 600px;
+  height: 600px;
+
+  border-radius: 50%;
+
+  background: rgba(214, 169, 48, 0.07);
+
+  filter: blur(100px);
+}
+
+.coming-content {
+  position: relative;
+  z-index: 2;
+
+  width: min(90%, 600px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+}
+
+.coming-logo {
+  width: min(180px, 50vw);
+  margin-bottom: 35px;
+}
+
+.coming-line {
+  width: 90px;
+  height: 1px;
+
+  margin-bottom: 35px;
+
+  background: #d7a936;
+}
+
+.coming-content h1 {
+  margin: 0;
+
+  font-size: clamp(55px, 9vw, 100px);
+  line-height: 0.9;
+
+  font-weight: 400;
+
+  color: #f5eee0;
+
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.coming-content > p {
+  margin-top: 30px;
+
+  font-size: 20px;
+
+  color: #d7a936;
+  letter-spacing: 0.08em;
+}
+
+.coming-description {
+  max-width: 460px;
+
+  margin-top: 10px !important;
+
+  font-size: 15px !important;
+  line-height: 1.7;
+
+  color: rgba(255, 255, 255, 0.7) !important;
+  letter-spacing: 0.03em !important;
+}
+
+
+/* =========================================
+   BACK BUTTON
+========================================= */
+
+.back-button {
+  margin-top: 35px;
+
+  padding: 14px 30px;
+
+  background: transparent;
+
+  font-size: 14px;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+  .home-hero {
+    background-position: 62% center;
+  }
+
+  .hero-content {
+    width: 92%;
+    padding:
+      20px
+      18px
+      calc(20px + env(safe-area-inset-bottom));
+  }
+
+  .brand-block {
+    margin-bottom: 30px;
+  }
+
+  .home-logo {
+    width: 58px;
+    margin-bottom: 9px;
+  }
+
+  .brand-name {
+    font-size: 38px;
+    letter-spacing: 0.12em;
+  }
+
+  .brand-tagline {
+    margin-top: 8px;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+  }
+
+  .hero-content h1 {
+    font-size: 46px;
+    line-height: 0.98;
+  }
+
+  .hero-divider {
+    width: 240px;
+    margin: 22px 0;
+  }
+
+  .hero-content p {
+    font-size: 15px;
+    line-height: 1.65;
+    margin-bottom: 28px;
+  }
+
+  .explore-button {
+    width: 100%;
+    max-width: 330px;
+
+    padding: 17px 20px;
+
+    font-size: 12px;
+    letter-spacing: 0.18em;
+  }
+
+  .coming-content {
+    width: 88%;
+  }
+
+  .coming-logo {
+    width: 150px;
+  }
+
+  .coming-content h1 {
+    font-size: 58px;
+  }
+
+  .coming-content > p {
+    font-size: 17px;
+  }
+
+  .coming-description {
+    max-width: 330px;
+    font-size: 14px !important;
+  }
+
+  .back-button {
+    width: 220px;
+  }
+}
+
+
+/* =========================================
+   SMALL PHONES
+========================================= */
+
+@media (max-height: 700px) and (max-width: 600px) {
+
+  .brand-block {
+    margin-bottom: 22px;
+  }
+
+  .home-logo {
+    width: 52px;
+    margin-bottom: 8px;
+  }
+
+  .brand-name {
+    font-size: 34px;
+  }
+
+  .brand-tagline {
+    font-size: 9px;
+    margin-top: 7px;
+  }
+
+  .hero-content h1 {
+    font-size: 38px;
+  }
+
+  .hero-divider {
+    margin: 15px 0;
+  }
+
+  .hero-content p {
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+}
+
+.hero-overlay {
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.explore-button {
+  position: relative;
+  z-index: 5;
+}

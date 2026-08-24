@@ -31,8 +31,9 @@ const stories = [
   },
   {
     image: scene5,
-    title: "Welcome",
-    subtitle: "Welcome to ZYVENIQ.",
+    title: "ZYVENIQ",
+    subtitle: "WEAR THE MOMENT",
+    welcome: "Welcome to ZYVENIQ.",
   },
 ];
 
@@ -325,19 +326,16 @@ export default function StoryHero({ onFinish }) {
 
           {/* CONTENT */}
 
-          <motion.div
+       <motion.div
             className="story-content"
-
             initial={{
               opacity: 0,
               y: 40,
             }}
-
             animate={{
               opacity: 1,
               y: 0,
             }}
-
             transition={{
               duration: 0.9,
               delay: 0.2,
@@ -351,12 +349,10 @@ export default function StoryHero({ onFinish }) {
                 opacity: 0,
                 y: 18,
               }}
-
               animate={{
                 opacity: 1,
                 y: 0,
               }}
-
               transition={{
                 duration: 0.75,
                 delay: 0.35,
@@ -364,6 +360,26 @@ export default function StoryHero({ onFinish }) {
             >
               {story.subtitle}
             </motion.p>
+
+            {story.welcome && (
+              <motion.div
+                className="welcome-message"
+                initial={{
+                  opacity: 0,
+                  y: 18,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                transition={{
+                  duration: 0.75,
+                  delay: 0.5,
+                }}
+              >
+                {story.welcome}
+              </motion.div>
+            )}
           </motion.div>
 
         </motion.div>

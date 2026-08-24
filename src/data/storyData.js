@@ -77,16 +77,13 @@ export const storyData = [
     id: "scene-5",
     image: scene5,
 
-    eyebrow: "THE JOURNEY",
-
-    title: "WELCOME",
-
+    title: "THE JOURNEY",
+    
     subtitle: "Welcome to ZYVENIQ.",
-
-    description:
-      "This is only the beginning.",
+    
+    description: "This is only the beginning.",
 
     detail:
-      "Step into a new world of fashion, culture and digital expression. Discover the collections, experience the story and become part of what comes next.",
+            "Step into a new world of fashion, culture and digital expression. Discover the collections; experience the story and become part of what comes next."
   },
 ];
