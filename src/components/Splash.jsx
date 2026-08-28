@@ -54,8 +54,8 @@ const Splash = ({ onComplete }) => {
     window.removeEventListener("mousemove", handleMouseMove);
     window.removeEventListener("click", startAudio);
 
-    audio.pause();
-    audio.currentTime = 0;
+    //audio.pause();
+    //audio.currentTime = 0;
   };
 }, []);
 
