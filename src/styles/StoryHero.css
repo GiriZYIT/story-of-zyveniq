@@ -2,23 +2,44 @@
    ZYVENIQ — CINEMATIC STORY EXPERIENCE
    ========================================= */
 
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&display=swap');
+
+
+/* =========================================
+   GLOBAL STORY FONT
+   Same font as Splash Screen
+   ========================================= */
+
+.story-container,
+.story-container * {
+  font-family: "Cinzel", serif;
+}
+
+
+/* =========================================
+   MAIN STORY CONTAINER
+   ========================================= */
+
 .story-container {
   position: fixed;
   inset: 0;
-  width: 100%;
+
+  width: 100vw;
   height: 100dvh;
+  min-height: 100dvh;
 
   background-size: cover;
-  background-position: center;
+  background-position: center center;
   background-repeat: no-repeat;
-
-  overflow: hidden;
-  cursor: pointer;
-  user-select: none;
 
   display: flex;
   align-items: center;
   justify-content: center;
+
+  overflow: hidden;
+
+  cursor: pointer;
+  user-select: none;
 
   isolation: isolate;
 
@@ -32,8 +53,10 @@
 
 .story-container::before {
   content: "";
+
   position: absolute;
   inset: 0;
+
   z-index: 1;
 
   background:
@@ -54,6 +77,7 @@
 
 .story-container::after {
   content: "";
+
   position: absolute;
 
   top: -50%;
@@ -64,14 +88,15 @@
 
   z-index: 2;
 
-  background: linear-gradient(
-    110deg,
-    transparent 0%,
-    rgba(255,255,255,0.02) 35%,
-    rgba(255,255,255,0.16) 50%,
-    rgba(255,255,255,0.02) 65%,
-    transparent 100%
-  );
+  background:
+    linear-gradient(
+      110deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.02) 35%,
+      rgba(255, 255, 255, 0.16) 50%,
+      rgba(255, 255, 255, 0.02) 65%,
+      transparent 100%
+    );
 
   transform: rotate(15deg);
 
@@ -104,20 +129,23 @@
 
 
 /* =========================================
-   CONTENT
+   STORY CONTENT
    ========================================= */
 
 .story-content {
   position: relative;
+
   z-index: 5;
 
   width: min(900px, 90%);
 
+  padding: 24px;
+
+  box-sizing: border-box;
+
   text-align: center;
 
-  color: white;
-
-  padding: 24px;
+  color: #ffffff;
 
   pointer-events: none;
 
@@ -126,7 +154,9 @@
 }
 
 
-/* SMALL BRAND LABEL */
+/* =========================================
+   SMALL ZYVENIQ BRAND LABEL
+   ========================================= */
 
 .story-content::before {
   content: "ZYVENIQ";
@@ -137,24 +167,30 @@
 
   color: #d4a017;
 
+  font-family: "Cinzel", serif;
+
   font-size: 11px;
+
+  font-weight: 600;
 
   letter-spacing: 0.55em;
 
-  font-weight: 600;
+  text-transform: uppercase;
 }
 
 
-/* TITLE */
+/* =========================================
+   MAIN TITLE
+   ========================================= */
 
 .story-content h1 {
   margin: 0;
 
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: "Cinzel", serif;
 
   font-size: clamp(38px, 8vw, 86px);
 
-  font-weight: 500;
+  font-weight: 600;
 
   line-height: 1.05;
 
@@ -163,438 +199,85 @@
   text-transform: uppercase;
 
   color: #ffffff;
+
+  text-shadow:
+    0 4px 30px rgba(0, 0, 0, 0.55);
 }
 
 
-/* SUBTITLE */
+/* =========================================
+   SUBTITLE
+   ========================================= */
 
 .story-content p {
   margin: 22px auto 0;
 
   max-width: 650px;
 
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: "Cinzel", serif;
 
   font-size: clamp(16px, 3vw, 25px);
 
-  font-weight: 400;
+  font-weight: 500;
 
   line-height: 1.6;
 
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
 
-  color: rgba(255,255,255,0.92);
+  color: rgba(255, 255, 255, 0.94);
+
+  text-shadow:
+    0 3px 20px rgba(0, 0, 0, 0.55);
 }
 
 
 /* =========================================
-   MOBILE
+   SCENE 5 — WELCOME MESSAGE
    ========================================= */
 
-@media (max-width: 768px) {
+.welcome-message {
+  margin-top: 22px;
 
-  .story-container {
-    background-position: center center;
-  }
+  font-family: "Cinzel", serif;
 
-  .story-content {
-    width: 92%;
-    padding: 20px;
-  }
+  font-size: clamp(22px, 3vw, 40px);
 
-  .story-content::before {
-    font-size: 8px;
-    letter-spacing: 0.45em;
-    margin-bottom: 14px;
-  }
+  font-weight: 500;
 
-  .story-content h1 {
-    font-size: clamp(34px, 12vw, 58px);
-    letter-spacing: 0.07em;
-  }
+  line-height: 1.3;
 
-  .story-content p {
-    margin-top: 16px;
-    font-size: 16px;
-    line-height: 1.55;
-    letter-spacing: 0.05em;
-  }
+  letter-spacing: 3px;
+
+  color: #ffffff;
+
+  text-transform: none;
+
+  text-shadow:
+    0 2px 18px rgba(0, 0, 0, 0.55);
 }
 
 
 /* =========================================
-   VERY SMALL PHONES
-   ========================================= */
-
-@media (max-width: 390px) {
-
-  .story-content h1 {
-    font-size: 32px;
-  }
-
-  .story-content p {
-    font-size: 14px;
-  }
-}
-
-
-/* =========================================
-   REDUCED MOTION ACCESSIBILITY
-   ========================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-  .story-container::after {
-    animation: none;
-  }
-
-}
-
-/* =========================
-   MOBILE RESPONSIVE
-   ========================= */
-
-@media (max-width: 768px) {
-
-  .story-container {
-    width: 100vw;
-    height: 100dvh;
-    min-height: 100dvh;
-
-    background-size: cover;
-    background-position: center center;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    overflow: hidden;
-    cursor: pointer;
-  }
-
-  .overlay {
-    background: rgba(0, 0, 0, 0.28);
-  }
-
-  .story-content {
-    width: 90%;
-    max-width: 420px;
-    padding: 20px;
-
-    text-align: center;
-  }
-
-  .story-content h1 {
-    font-size: clamp(38px, 11vw, 64px);
-    line-height: 1.05;
-    letter-spacing: 4px;
-    margin-bottom: 14px;
-  }
-
-  .story-content p {
-    font-size: clamp(16px, 4.5vw, 22px);
-    line-height: 1.5;
-    letter-spacing: 1px;
-    margin: 0 auto;
-  }
-}
-
-
-/* Small phones */
-@media (max-width: 480px) {
-
-  .story-container {
-    background-position: center center;
-  }
-
-  .story-content {
-    width: 92%;
-    padding: 16px;
-  }
-
-  .story-content h1 {
-    font-size: 42px;
-    letter-spacing: 3px;
-  }
-
-  .story-content p {
-    font-size: 17px;
-    line-height: 1.45;
-    letter-spacing: 0.8px;
-  }
-}
-
-
-/* Very small phones */
-@media (max-width: 360px) {
-
-  .story-content h1 {
-    font-size: 34px;
-  }
-
-  .story-content p {
-    font-size: 15px;
-  }
-}
-
-/* =========================================
-   MOBILE RESPONSIVE DESIGN
-   ========================================= */
-
-@media (max-width: 768px) {
-
-  .story-container {
-    width: 100%;
-    height: 100dvh;
-    min-height: 100dvh;
-
-    background-size: cover;
-    background-position: center center;
-
-    overflow: hidden;
-  }
-
-  .overlay {
-    background: rgba(0, 0, 0, 0.32);
-  }
-
-  .story-content {
-    width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
-
-    padding: 0 22px 70px;
-
-    text-align: center;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    overflow: hidden;
-  }
-
-  .story-content h1 {
-    width: 100%;
-
-    margin: 0 0 14px;
-
-    font-size: clamp(42px, 14vw, 68px);
-    line-height: 0.95;
-
-    letter-spacing: 3px;
-
-    text-transform: uppercase;
-
-    white-space: normal;
-    overflow-wrap: anywhere;
-    word-break: normal;
-  }
-
-  .story-content p {
-    width: 100%;
-    max-width: 340px;
-
-    margin: 0 auto;
-
-    font-size: clamp(17px, 5vw, 24px);
-    line-height: 1.35;
-
-    letter-spacing: 0.5px;
-
-    white-space: normal;
-    overflow-wrap: break-word;
-  }
-}
-
-
-/* Smaller phones */
-@media (max-width: 430px) {
-
-  .story-content {
-    padding-left: 18px;
-    padding-right: 18px;
-    padding-bottom: 55px;
-  }
-
-  .story-content h1 {
-    font-size: clamp(38px, 13vw, 58px);
-    letter-spacing: 2px;
-  }
-
-  .story-content p {
-    max-width: 330px;
-
-    font-size: 18px;
-    line-height: 1.35;
-  }
-}
-
-
-/* Very small phones */
-@media (max-width: 360px) {
-
-  .story-content {
-    padding-left: 14px;
-    padding-right: 14px;
-  }
-
-  .story-content h1 {
-    font-size: 38px;
-  }
-
-  .story-content p {
-    font-size: 16px;
-    max-width: 300px;
-  }
-}
-
-@media (max-width: 768px) {
-
-  .experience-buttons {
-    width: 100%;
-    padding: 0 20px;
-    box-sizing: border-box;
-
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-  }
-
-  .experience-buttons button {
-    width: 100%;
-    max-width: 340px;
-    margin: 0 auto;
-
-    min-height: 70px;
-
-    padding: 16px 20px;
-
-    box-sizing: border-box;
-
-    font-size: 18px;
-    letter-spacing: 2px;
-  }
-}
-
-@media (max-width: 768px) {
-
-  .splash-container {
-    width: 100%;
-    height: 100dvh;
-    overflow: hidden;
-  }
-
-  .splash-content {
-    width: 100%;
-    max-width: 100%;
-    padding: 20px;
-    box-sizing: border-box;
-  }
-
-  .splash-content h1 {
-    font-size: clamp(42px, 15vw, 70px);
-    letter-spacing: 4px;
-    line-height: 1;
-  }
-
-  .splash-content p {
-    width: 100%;
-    max-width: 330px;
-
-    margin: 20px auto;
-
-    font-size: 16px;
-    line-height: 1.5;
-  }
-
-  .splash-content button {
-    width: min(90%, 340px);
-
-    padding: 18px 24px;
-
-    font-size: 20px;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .story-container {
-    position: fixed;
-    inset: 0;
-
-    width: 100vw;
-    height: 100dvh;
-
-    min-width: 0;
-    max-width: 100vw;
-
-    overflow: hidden;
-
-    background-size: cover;
-    background-position: center;
-  }
-
-  .story-content {
-    width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
-
-    padding: 20px;
-
-    text-align: center;
-  }
-
-  .story-content h1 {
-    width: 100%;
-    max-width: 100%;
-
-    font-size: clamp(40px, 13vw, 64px);
-    line-height: 0.95;
-
-    letter-spacing: 2px;
-
-    margin: 0 0 15px;
-
-    overflow-wrap: break-word;
-  }
-
-  .story-content p {
-    width: 100%;
-    max-width: 330px;
-
-    margin: 0 auto;
-
-    font-size: 17px;
-    line-height: 1.4;
-    letter-spacing: 0.5px;
-  }
-}
-
-/* =========================================
-   ZYVENIQ STORY — MOBILE APP MODE
+   MOBILE — TABLETS & PHONES
    ========================================= */
 
 @media screen and (max-width: 768px) {
 
   .story-container {
-    position: fixed;
-    inset: 0;
-
     width: 100vw;
     height: 100dvh;
-
-    min-width: 0;
-    max-width: 100vw;
-
-    overflow: hidden;
+    min-height: 100dvh;
 
     background-size: cover;
     background-position: center center;
 
     touch-action: pan-y;
-    -webkit-user-select: none;
-    user-select: none;
+
+    overflow: hidden;
   }
+
+
+  /* Content */
 
   .story-content {
     position: absolute;
@@ -607,7 +290,7 @@
     width: 100%;
     max-width: 100%;
 
-    padding: 0 24px;
+    padding: 0 22px;
 
     box-sizing: border-box;
 
@@ -620,13 +303,19 @@
     overflow: hidden;
   }
 
+
+  /* ZYVENIQ label */
+
   .story-content::before {
+    margin-bottom: 14px;
+
     font-size: 9px;
 
     letter-spacing: 0.4em;
-
-    margin-bottom: 14px;
   }
+
+
+  /* Title */
 
   .story-content h1 {
     width: 100%;
@@ -635,6 +324,8 @@
     margin: 0;
 
     font-size: clamp(38px, 13vw, 58px);
+
+    font-weight: 600;
 
     line-height: 0.98;
 
@@ -646,6 +337,9 @@
     word-break: normal;
   }
 
+
+  /* Subtitle */
+
   .story-content p {
     width: 100%;
     max-width: 330px;
@@ -653,6 +347,8 @@
     margin: 16px auto 0;
 
     font-size: 17px;
+
+    font-weight: 500;
 
     line-height: 1.45;
 
@@ -663,85 +359,8 @@
     overflow-wrap: break-word;
   }
 
-  /* Progress bars */
 
-  .story-progress {
-    position: fixed;
-
-    top: calc(14px + env(safe-area-inset-top));
-
-    left: 14px;
-    right: 14px;
-
-    z-index: 100;
-
-    display: flex;
-
-    gap: 4px;
-  }
-
-  /* Mobile safe area */
-
-  .story-container {
-    padding-top: env(safe-area-inset-top);
-    padding-bottom: env(safe-area-inset-bottom);
-
-    box-sizing: border-box;
-  }
-}
-
-
-/* =========================================
-   SMALL PHONES
-   ========================================= */
-
-@media screen and (max-width: 390px) {
-
-  .story-content {
-    bottom: 11%;
-
-    padding-left: 18px;
-    padding-right: 18px;
-  }
-
-  .story-content h1 {
-    font-size: 38px;
-    letter-spacing: 1.5px;
-  }
-
-  .story-content p {
-    max-width: 310px;
-    font-size: 16px;
-  }
-}
-
-/* =========================================
-   SCENE 5 — WELCOME MESSAGE
-========================================= */
-
-.welcome-message {
-  margin-top: 22px;
-
-  font-family: "Cinzel", Georgia, serif;
-
-  font-size: clamp(22px, 3vw, 40px);
-  font-weight: 500;
-
-  letter-spacing: 3px;
-  line-height: 1.3;
-
-  color: #ffffff;
-
-  text-transform: none;
-
-  text-shadow:
-    0 2px 18px rgba(0, 0, 0, 0.55);
-}
-
-
-/* MOBILE */
-
-@media screen and (max-width: 768px) {
+  /* Welcome */
 
   .welcome-message {
     margin-top: 18px;
@@ -756,5 +375,129 @@
 
     text-align: center;
   }
+}
 
+
+/* =========================================
+   SMALL PHONES
+   ========================================= */
+
+@media screen and (max-width: 430px) {
+
+  .story-content {
+    bottom: 11%;
+
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+
+  .story-content h1 {
+    font-size: clamp(36px, 13vw, 56px);
+
+    letter-spacing: 1.8px;
+  }
+
+
+  .story-content p {
+    max-width: 320px;
+
+    font-size: 16px;
+
+    line-height: 1.4;
+  }
+
+
+  .welcome-message {
+    max-width: 310px;
+
+    font-size: 20px;
+
+    letter-spacing: 1.2px;
+  }
+}
+
+
+/* =========================================
+   VERY SMALL PHONES
+   ========================================= */
+
+@media screen and (max-width: 360px) {
+
+  .story-content {
+    bottom: 10%;
+
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+
+  .story-content h1 {
+    font-size: 34px;
+
+    letter-spacing: 1.5px;
+  }
+
+
+  .story-content p {
+    max-width: 295px;
+
+    font-size: 15px;
+
+    line-height: 1.4;
+  }
+
+
+  .welcome-message {
+    max-width: 290px;
+
+    font-size: 18px;
+  }
+}
+
+
+/* =========================================
+   STORY PROGRESS BARS — MOBILE
+   ========================================= */
+
+.story-progress {
+  position: fixed;
+
+  top: calc(14px + env(safe-area-inset-top));
+
+  left: 14px;
+  right: 14px;
+
+  z-index: 100;
+
+  display: flex;
+
+  gap: 4px;
+}
+
+
+/* =========================================
+   MOBILE SAFE AREA
+   ========================================= */
+
+@media screen and (max-width: 768px) {
+
+  .story-container {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+
+    box-sizing: border-box;
+  }
+}
+
+
+/* =========================================
+   REDUCED MOTION
+   ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .story-container::after {
+    animation: none;
+  }
 }
