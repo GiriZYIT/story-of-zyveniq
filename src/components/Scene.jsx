@@ -129,7 +129,7 @@ export default function Scene({
 
       <div className="scene-hint">
         <span>TAP ON RIGHT SIDE TO EXPLORE</span>
-        <span>TAP ON LEFT SIDE TO GO BACK</span>
+        <span> OR TAP ON LEFT SIDE TO GO BACK</span>
       </div>
     </motion.div>
   );
