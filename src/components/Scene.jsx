@@ -128,7 +128,8 @@ export default function Scene({
       </motion.div>
 
       <div className="scene-hint">
-        <span>SWIPE TO EXPLORE</span>
+        <span>TAP ON RIGHT SIDE TO EXPLORE</span>
+        <span>TAP ON LEFT SIDE TO GO BACK</span>
       </div>
     </motion.div>
   );
